@@ -1,0 +1,1 @@
+EXEC [catalog].[enable_worker_agent] '2EA27DD2-59C4-4422-820B-DAA9C144C3BB'

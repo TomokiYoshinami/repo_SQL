@@ -1,0 +1,7 @@
+USE master
+GO
+
+--ADD
+
+ALTER DATABASE tempdb ADD FILE(NAME = temp9, FILENAME = N'D:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\tempdb_mssql_9.ndf', SIZE = 10 GB, MAXSIZE = 40 GB, FILEGROWTH = 1 GB);
+GO

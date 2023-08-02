@@ -1,0 +1,2 @@
+ALTER DATABASE Jackpot ADD FILEGROUP memory_optimized_filegroup_0 CONTAINS MEMORY_OPTIMIZED_DATA;
+ALTER DATABASE Jckpot ADD FILE(NAME = memory_optimized_file_0, FILENAME = 'D:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\Data\memory_optimized_file_0') TO FILEGROUP memory_optimized_filegroup_0;

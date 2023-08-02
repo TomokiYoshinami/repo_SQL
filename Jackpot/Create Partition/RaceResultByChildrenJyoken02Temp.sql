@@ -1,0 +1,37 @@
+USE [Jackpot]
+GO
+BEGIN TRANSACTION
+
+
+
+
+ALTER TABLE [dbo].[RaceResultByChildrenJyoken02Temp] DROP CONSTRAINT [PK_RaceResultByChildrenJyoken02Temp]
+
+
+ALTER TABLE [dbo].[RaceResultByChildrenJyoken02Temp] ADD  CONSTRAINT [PK_RaceResultByChildrenJyoken02Temp] PRIMARY KEY NONCLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = ON, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 70) ON [PRIMARY]
+
+
+CREATE CLUSTERED INDEX [ClusteredIndex_on_PS_Date2_636027997421441732] ON [dbo].[RaceResultByChildrenJyoken02Temp]
+(
+	[RaceDate]
+)WITH (SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF) ON [PS_Date2]([RaceDate])
+
+
+DROP INDEX [ClusteredIndex_on_PS_Date2_636027997421441732] ON [dbo].[RaceResultByChildrenJyoken02Temp]
+
+
+
+
+
+
+
+
+
+
+COMMIT TRANSACTION
+
+
+

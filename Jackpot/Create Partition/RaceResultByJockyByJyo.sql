@@ -1,0 +1,57 @@
+USE [Jackpot]
+GO
+BEGIN TRANSACTION
+
+
+
+
+ALTER TABLE [dbo].[RaceResultByJockyByJyo] DROP CONSTRAINT [PK_RaceResultByJockyByJyo]
+
+
+ALTER TABLE [dbo].[RaceResultByJockyByJyo] ADD  CONSTRAINT [PK_RaceResultByJockyByJyo] PRIMARY KEY NONCLUSTERED 
+(
+	[RaceID] DESC,
+	[KettoNum] ASC,
+	[SummaryType] ASC,
+	[TrackTypeCD] ASC,
+	[JyoCD2] ASC
+)WITH (PAD_INDEX = ON, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = ON, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 70) ON [PRIMARY]
+
+
+CREATE CLUSTERED INDEX [ClusteredIndex_on_PS_Date_636027157395371391] ON [dbo].[RaceResultByJockyByJyo]
+(
+	[RaceDate]
+)WITH (SORT_IN_TEMPDB = ON, DROP_EXISTING = OFF, ONLINE = OFF) ON [PS_Date]([RaceDate])
+
+
+DROP INDEX [ClusteredIndex_on_PS_Date_636027157395371391] ON [dbo].[RaceResultByJockyByJyo]
+
+
+
+
+
+
+
+
+CREATE UNIQUE NONCLUSTERED INDEX [IX_RaceResultByJockyByJyo] ON [dbo].[RaceResultByJockyByJyo]
+(
+	[RaceDate] DESC,
+	[JyoCD] ASC,
+	[Kaiji] ASC,
+	[Nichiji] ASC,
+	[RaceNum] ASC,
+	[KettoNum] ASC,
+	[SummaryType] ASC,
+	[TrackTypeCD] ASC,
+	[JyoCD2] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = ON, IGNORE_DUP_KEY = OFF, DROP_EXISTING = ON, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_Date]([RaceDate])
+
+
+
+
+
+
+COMMIT TRANSACTION
+
+
+

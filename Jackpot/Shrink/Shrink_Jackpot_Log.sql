@@ -1,0 +1,5 @@
+USE Jackpot
+GO
+DBCC SHRINKFILE(Jackpot_log_0, 10240)
+--DBCC SHRINKFILE(Jackpot_log_0, 1024)
+--DBCC SHRINKFILE(Jackpot_log_1, 1024)

@@ -1,0 +1,8 @@
+USE tempdb
+GO
+DBCC SHRINKDATABASE(tempdb,0)
+GO
+USE Jackpot
+GO
+DBCC SHRINKDATABASE(Jackpot,0)
+GO

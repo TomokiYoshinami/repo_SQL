@@ -1,0 +1,56 @@
+USE [Jackpot]
+GO
+BEGIN TRANSACTION
+
+
+
+
+ALTER TABLE [dbo].[MgmtBetHistoryDetail] DROP CONSTRAINT [PK_MgmtBetHistoryDetail]
+
+
+ALTER TABLE [dbo].[MgmtBetHistoryDetail] ADD  CONSTRAINT [PK_MgmtBetHistoryDetail] PRIMARY KEY NONCLUSTERED 
+(
+	[BetDateTime] DESC,
+	[ReceptID] DESC,
+	[RaceID] ASC,
+	[BetTypeCD] ASC,
+	[BetNum] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 70) ON [PRIMARY]
+
+
+CREATE CLUSTERED INDEX [ClusteredIndex_on_PS_Date_636028178962633919] ON [dbo].[MgmtBetHistoryDetail]
+(
+	[RaceDate]
+)WITH (SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF) ON [PS_Date]([RaceDate])
+
+
+DROP INDEX [ClusteredIndex_on_PS_Date_636028178962633919] ON [dbo].[MgmtBetHistoryDetail]
+
+
+
+
+
+
+
+
+CREATE UNIQUE NONCLUSTERED INDEX [IX_MgmtBetHistoryDetail] ON [dbo].[MgmtBetHistoryDetail]
+(
+	[BetDateTime] ASC,
+	[RaceDate] DESC,
+	[JyoCD] ASC,
+	[Kaiji] ASC,
+	[Nichiji] ASC,
+	[RaceNum] ASC,
+	[BetTypeCD] ASC,
+	[BetNum] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = ON, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_Date]([RaceDate])
+
+
+
+
+
+
+COMMIT TRANSACTION
+
+
+

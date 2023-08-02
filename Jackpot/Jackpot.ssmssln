@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# SQL Server Management Studio Solution File, Format Version 18.00
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{4F2E2C19-372F-40D8-9FA7-9D2138C6997A}") = "Jackpot", "Jackpot\Jackpot.ssmssqlproj", "{A5932CC2-F35B-42B3-8E7E-44FA6E2262DE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Default|Default = Default|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A5932CC2-F35B-42B3-8E7E-44FA6E2262DE}.Default|Default.ActiveCfg = Default
+		{693F8EC9-898D-48CC-8C3B-F51A8FC2C7C4}.Default|Default.ActiveCfg = Default
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E33B47E8-81EC-4FFC-93F7-67A9DC0FB0A8}
+	EndGlobalSection
+EndGlobal

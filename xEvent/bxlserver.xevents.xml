@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>  
+<event_sessions>  
+ <event_session name="sqlsatelliteut" maxMemory="1" dispatchLatency="1" MaxDispatchLatency="2 SECONDS">  
+    <description owner="hay">Xevent for sql tdd runner.</description>  
+    <event package="SQLSatellite" name="satellite_abort_received" />  
+    <event package="SQLSatellite" name="satellite_authentication_completion" />  
+    <event package="SQLSatellite" name="satellite_cleanup" />  
+    <event package="SQLSatellite" name="satellite_data_receive_completion" />  
+    <event package="SQLSatellite" name="satellite_data_send_completion" />  
+    <event package="SQLSatellite" name="satellite_data_send_start" />  
+    <event package="SQLSatellite" name="satellite_schema_sent" />   
+    <event package="SQLSatellite" name="satellite_unexpected_message_received" />    
+    <event package="SQLSatellite" name="satellite_data_chunk_sent" />   
+    <target package="package0" name="event_file">  
+      <parameter name="filename" value="satellite_session.xel" />  
+      <parameter name="max_file_size" value="10" />  
+      <parameter name="max_rollover_files" value="10" />  
+    </target>  
+  </event_session>  
+</event_sessions>

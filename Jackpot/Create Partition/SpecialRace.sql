@@ -1,0 +1,57 @@
+USE [Jackpot]
+GO
+BEGIN TRANSACTION
+ALTER TABLE [dbo].[SpecialRaceByHorse] DROP CONSTRAINT [FK_SpecialRaceByHorse_SpecialRace]
+
+
+
+
+
+
+ALTER TABLE [dbo].[SpecialRace] DROP CONSTRAINT [PK_SpecialRace]
+
+
+ALTER TABLE [dbo].[SpecialRace] ADD  CONSTRAINT [PK_SpecialRace] PRIMARY KEY NONCLUSTERED 
+(
+	[RaceID] DESC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 70) ON [PRIMARY]
+
+
+CREATE CLUSTERED INDEX [ClusteredIndex_on_PS_Date_636028182185862417] ON [dbo].[SpecialRace]
+(
+	[RaceDate]
+)WITH (SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF) ON [PS_Date]([RaceDate])
+
+
+DROP INDEX [ClusteredIndex_on_PS_Date_636028182185862417] ON [dbo].[SpecialRace]
+
+
+
+
+ALTER TABLE [dbo].[SpecialRaceByHorse]  WITH NOCHECK ADD  CONSTRAINT [FK_SpecialRaceByHorse_SpecialRace] FOREIGN KEY([RaceID])
+REFERENCES [dbo].[SpecialRace] ([RaceID])
+ALTER TABLE [dbo].[SpecialRaceByHorse] NOCHECK CONSTRAINT [FK_SpecialRaceByHorse_SpecialRace]
+
+
+
+
+
+
+CREATE UNIQUE NONCLUSTERED INDEX [IX_SpecialRace] ON [dbo].[SpecialRace]
+(
+	[RaceDate] DESC,
+	[JyoCD] ASC,
+	[Kaiji] ASC,
+	[Nichiji] ASC,
+	[RaceNum] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = ON, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_Date]([RaceDate])
+
+
+
+
+
+
+COMMIT TRANSACTION
+
+
+

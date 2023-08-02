@@ -1,0 +1,3 @@
+USE Jackpot
+GO
+DBCC SHRINKFILE(Jackpot_log_0, 20480)

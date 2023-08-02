@@ -1,0 +1,57 @@
+USE [Jackpot]
+GO
+BEGIN TRANSACTION
+
+
+
+
+ALTER TABLE [dbo].[Odds2ByQuinella] DROP CONSTRAINT [PK_Odds2ByQuinella]
+
+
+ALTER TABLE [dbo].[Odds2ByQuinella] ADD  CONSTRAINT [PK_Odds2ByQuinella] PRIMARY KEY NONCLUSTERED 
+(
+	[RaceID] DESC,
+	[BetTypeCD] ASC,
+	[Kumi1] ASC,
+	[Kumi2] ASC,
+	[Kumi3] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = ON, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+
+
+CREATE CLUSTERED INDEX [ClusteredIndex_on_PS_Date_636027173788677968] ON [dbo].[Odds2ByQuinella]
+(
+	[RaceDate]
+)WITH (SORT_IN_TEMPDB = ON, DROP_EXISTING = OFF, ONLINE = OFF) ON [PS_Date]([RaceDate])
+
+
+DROP INDEX [ClusteredIndex_on_PS_Date_636027173788677968] ON [dbo].[Odds2ByQuinella]
+
+
+
+
+
+
+
+
+CREATE UNIQUE NONCLUSTERED INDEX [IX_Odds2ByQuinella] ON [dbo].[Odds2ByQuinella]
+(
+	[RaceDate] DESC,
+	[JyoCD] ASC,
+	[Kaiji] ASC,
+	[Nichiji] ASC,
+	[RaceNum] ASC,
+	[BetTypeCD] ASC,
+	[Kumi1] ASC,
+	[Kumi2] ASC,
+	[Kumi3] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = ON, IGNORE_DUP_KEY = OFF, DROP_EXISTING = ON, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_Date]([RaceDate])
+
+
+
+
+
+
+COMMIT TRANSACTION
+
+
+

@@ -1,0 +1,31 @@
+USE [Jackpot]
+GO
+BEGIN TRANSACTION
+
+
+
+
+ALTER TABLE [dbo].[SlopeTraining] DROP CONSTRAINT [PK_SlopeTraining]
+
+
+ALTER TABLE [dbo].[SlopeTraining] ADD  CONSTRAINT [PK_SlopeTraining] PRIMARY KEY CLUSTERED 
+(
+	[TresenKubun] ASC,
+	[ChokyoDate] DESC,
+	[ChokyoTime] DESC,
+	[KettoNum] DESC
+)WITH (PAD_INDEX = ON, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 70) ON [PS_Date]([ChokyoDate])
+
+
+
+
+
+
+
+
+
+
+COMMIT TRANSACTION
+
+
+

@@ -1,0 +1,2 @@
+SELECT 'ALTER INDEX ALL ON ' + name +' REBUILD WITH(FILLFACTOR = 90)' FROM sys.tables WHERE type ='U'
+ORDER BY name

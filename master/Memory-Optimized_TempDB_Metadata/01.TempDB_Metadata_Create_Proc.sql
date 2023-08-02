@@ -1,0 +1,6 @@
+USE Jackpot
+GO
+CREATE PROCEDURE dbo.TempTableProc AS
+BEGIN
+ CREATE TABLE #Temp (c1 int)
+END;

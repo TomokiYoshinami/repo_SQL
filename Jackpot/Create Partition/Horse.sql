@@ -1,0 +1,221 @@
+USE [Jackpot]
+GO
+BEGIN TRANSACTION
+ALTER TABLE [dbo].[Hansyoku] DROP CONSTRAINT [FK_Hansyoku_Horse]
+
+
+ALTER TABLE [dbo].[HorseByCourseType] DROP CONSTRAINT [FK_HorseByCourseType_Horse]
+
+
+ALTER TABLE [dbo].[HorseByDistanceType] DROP CONSTRAINT [FK_HorseByDistanceType_Horse]
+
+
+ALTER TABLE [dbo].[HorseByRunningStyle] DROP CONSTRAINT [FK_HorseByRunningStyle_Horse]
+
+
+ALTER TABLE [dbo].[HorseByTotal] DROP CONSTRAINT [FK_HorseByTotal_Horse]
+
+
+ALTER TABLE [dbo].[HorseByTrackCondition] DROP CONSTRAINT [FK_HorseByTrackCondition_Horse]
+
+
+ALTER TABLE [dbo].[HorseMiracle] DROP CONSTRAINT [FK_HorseMiracle_Horse]
+
+
+ALTER TABLE [dbo].[HorseMiracle] DROP CONSTRAINT [FK_HorseMiracle_Horse1]
+
+
+ALTER TABLE [dbo].[HorseMiracleDetail] DROP CONSTRAINT [FK_HorseMiracleDetail_Horse]
+
+
+
+
+
+
+ALTER TABLE [dbo].[Horse] DROP CONSTRAINT [PK_Horse]
+
+
+ALTER TABLE [dbo].[Horse] ADD  CONSTRAINT [PK_Horse] PRIMARY KEY NONCLUSTERED 
+(
+	[KettoNum] DESC
+)WITH (PAD_INDEX = ON, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = ON, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, FILLFACTOR = 70) ON [PRIMARY]
+
+
+CREATE CLUSTERED INDEX [ClusteredIndex_on_RegDate_Scheme_636027087301289706] ON [dbo].[Horse]
+(
+	[RegDate]
+)WITH (SORT_IN_TEMPDB = ON, DROP_EXISTING = OFF, ONLINE = OFF) ON [PS_Date]([RegDate])
+
+
+DROP INDEX [ClusteredIndex_on_RegDate_Scheme_636027087301289706] ON [dbo].[Horse]
+
+
+
+
+ALTER TABLE [dbo].[Hansyoku]  WITH NOCHECK ADD  CONSTRAINT [FK_Hansyoku_Horse] FOREIGN KEY([KettoNum])
+REFERENCES [dbo].[Horse] ([KettoNum])
+ALTER TABLE [dbo].[Hansyoku] NOCHECK CONSTRAINT [FK_Hansyoku_Horse]
+
+
+ALTER TABLE [dbo].[HorseByCourseType]  WITH NOCHECK ADD  CONSTRAINT [FK_HorseByCourseType_Horse] FOREIGN KEY([KettoNum])
+REFERENCES [dbo].[Horse] ([KettoNum])
+ALTER TABLE [dbo].[HorseByCourseType] NOCHECK CONSTRAINT [FK_HorseByCourseType_Horse]
+
+
+ALTER TABLE [dbo].[HorseByDistanceType]  WITH NOCHECK ADD  CONSTRAINT [FK_HorseByDistanceType_Horse] FOREIGN KEY([KettoNum])
+REFERENCES [dbo].[Horse] ([KettoNum])
+ALTER TABLE [dbo].[HorseByDistanceType] NOCHECK CONSTRAINT [FK_HorseByDistanceType_Horse]
+
+
+ALTER TABLE [dbo].[HorseByRunningStyle]  WITH NOCHECK ADD  CONSTRAINT [FK_HorseByRunningStyle_Horse] FOREIGN KEY([KettoNum])
+REFERENCES [dbo].[Horse] ([KettoNum])
+ALTER TABLE [dbo].[HorseByRunningStyle] NOCHECK CONSTRAINT [FK_HorseByRunningStyle_Horse]
+
+
+ALTER TABLE [dbo].[HorseByTotal]  WITH NOCHECK ADD  CONSTRAINT [FK_HorseByTotal_Horse] FOREIGN KEY([KettoNum])
+REFERENCES [dbo].[Horse] ([KettoNum])
+ALTER TABLE [dbo].[HorseByTotal] NOCHECK CONSTRAINT [FK_HorseByTotal_Horse]
+
+
+ALTER TABLE [dbo].[HorseByTrackCondition]  WITH NOCHECK ADD  CONSTRAINT [FK_HorseByTrackCondition_Horse] FOREIGN KEY([KettoNum])
+REFERENCES [dbo].[Horse] ([KettoNum])
+ALTER TABLE [dbo].[HorseByTrackCondition] NOCHECK CONSTRAINT [FK_HorseByTrackCondition_Horse]
+
+
+ALTER TABLE [dbo].[HorseMiracle]  WITH NOCHECK ADD  CONSTRAINT [FK_HorseMiracle_Horse] FOREIGN KEY([KettoNum])
+REFERENCES [dbo].[Horse] ([KettoNum])
+ALTER TABLE [dbo].[HorseMiracle] NOCHECK CONSTRAINT [FK_HorseMiracle_Horse]
+
+
+ALTER TABLE [dbo].[HorseMiracle]  WITH NOCHECK ADD  CONSTRAINT [FK_HorseMiracle_Horse1] FOREIGN KEY([KettoNum])
+REFERENCES [dbo].[Horse] ([KettoNum])
+ALTER TABLE [dbo].[HorseMiracle] NOCHECK CONSTRAINT [FK_HorseMiracle_Horse1]
+
+
+ALTER TABLE [dbo].[HorseMiracleDetail]  WITH NOCHECK ADD  CONSTRAINT [FK_HorseMiracleDetail_Horse] FOREIGN KEY([KettoNum])
+REFERENCES [dbo].[Horse] ([KettoNum])
+ALTER TABLE [dbo].[HorseMiracleDetail] NOCHECK CONSTRAINT [FK_HorseMiracleDetail_Horse]
+
+
+
+
+
+
+CREATE NONCLUSTERED INDEX [IX_Horse_Ketto3InfoHansyokuNum01] ON [dbo].[Horse]
+(
+	[Ketto3InfoHansyokuNum1] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = ON, DROP_EXISTING = ON, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_Date]([RegDate])
+
+
+
+
+CREATE NONCLUSTERED INDEX [IX_Horse_Ketto3InfoHansyokuNum02] ON [dbo].[Horse]
+(
+	[Ketto3InfoHansyokuNum2] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = ON, DROP_EXISTING = ON, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_Date]([RegDate])
+
+
+
+
+CREATE NONCLUSTERED INDEX [IX_Horse_Ketto3InfoHansyokuNum03] ON [dbo].[Horse]
+(
+	[Ketto3InfoHansyokuNum3] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = ON, DROP_EXISTING = ON, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_Date]([RegDate])
+
+
+
+
+CREATE NONCLUSTERED INDEX [IX_Horse_Ketto3InfoHansyokuNum04] ON [dbo].[Horse]
+(
+	[Ketto3InfoHansyokuNum4] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = ON, DROP_EXISTING = ON, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_Date]([RegDate])
+
+
+
+
+CREATE NONCLUSTERED INDEX [IX_Horse_Ketto3InfoHansyokuNum05] ON [dbo].[Horse]
+(
+	[Ketto3InfoHansyokuNum5] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = ON, DROP_EXISTING = ON, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_Date]([RegDate])
+
+
+
+
+CREATE NONCLUSTERED INDEX [IX_Horse_Ketto3InfoHansyokuNum06] ON [dbo].[Horse]
+(
+	[Ketto3InfoHansyokuNum6] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = ON, DROP_EXISTING = ON, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_Date]([RegDate])
+
+
+
+
+CREATE NONCLUSTERED INDEX [IX_Horse_Ketto3InfoHansyokuNum07] ON [dbo].[Horse]
+(
+	[Ketto3InfoHansyokuNum7] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = ON, DROP_EXISTING = ON, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_Date]([RegDate])
+
+
+
+
+CREATE NONCLUSTERED INDEX [IX_Horse_Ketto3InfoHansyokuNum08] ON [dbo].[Horse]
+(
+	[Ketto3InfoHansyokuNum8] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = ON, DROP_EXISTING = ON, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_Date]([RegDate])
+
+
+
+
+CREATE NONCLUSTERED INDEX [IX_Horse_Ketto3InfoHansyokuNum09] ON [dbo].[Horse]
+(
+	[Ketto3InfoHansyokuNum9] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = ON, DROP_EXISTING = ON, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_Date]([RegDate])
+
+
+
+
+CREATE NONCLUSTERED INDEX [IX_Horse_Ketto3InfoHansyokuNum10] ON [dbo].[Horse]
+(
+	[Ketto3InfoHansyokuNum10] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = ON, DROP_EXISTING = ON, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_Date]([RegDate])
+
+
+
+
+CREATE NONCLUSTERED INDEX [IX_Horse_Ketto3InfoHansyokuNum11] ON [dbo].[Horse]
+(
+	[Ketto3InfoHansyokuNum11] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = ON, DROP_EXISTING = ON, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_Date]([RegDate])
+
+
+
+
+CREATE NONCLUSTERED INDEX [IX_Horse_Ketto3InfoHansyokuNum12] ON [dbo].[Horse]
+(
+	[Ketto3InfoHansyokuNum12] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = ON, DROP_EXISTING = ON, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_Date]([RegDate])
+
+
+
+
+CREATE NONCLUSTERED INDEX [IX_Horse_Ketto3InfoHansyokuNum13] ON [dbo].[Horse]
+(
+	[Ketto3InfoHansyokuNum13] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = ON, DROP_EXISTING = ON, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_Date]([RegDate])
+
+
+
+
+CREATE NONCLUSTERED INDEX [IX_Horse_Ketto3InfoHansyokuNum14] ON [dbo].[Horse]
+(
+	[Ketto3InfoHansyokuNum14] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = ON, DROP_EXISTING = ON, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PS_Date]([RegDate])
+
+
+
+
+
+
+COMMIT TRANSACTION
+
+
+

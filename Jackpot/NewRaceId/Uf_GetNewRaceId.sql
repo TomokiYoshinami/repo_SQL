@@ -1,0 +1,24 @@
+USE [Jackpot]
+GO
+
+DROP FUNCTION [dbo].[Uf_GetNewRaceId]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE FUNCTION [dbo].[Uf_GetNewRaceId]
+    (
+    @RaceId NCHAR(20)
+    )
+RETURNS NCHAR(14)
+AS
+    BEGIN
+        RETURN SUBSTRING(@Raceid,0,12) + SUBSTRING(@Raceid,18,3)
+    END
+GO
+
+

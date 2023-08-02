@@ -1,0 +1,17 @@
+USE jackpot;
+GO
+TRUNCATE TABLE RaceResultByChildrenCourseType01;
+TRUNCATE TABLE RaceResultByChildrenCourseType02;
+TRUNCATE TABLE RaceResultByChildrenJyoken01;
+TRUNCATE TABLE RaceResultByChildrenJyoken02;
+TRUNCATE TABLE RaceResultByChildrenSmile01;
+TRUNCATE TABLE RaceResultByChildrenSmile02;
+TRUNCATE TABLE RaceResultByChildrenTrackCondition01;
+TRUNCATE TABLE RaceResultByChildrenTrackCondition02;
+TRUNCATE TABLE RaceResultByChildrenTrackType01;
+TRUNCATE TABLE RaceResultByChildrenTrackType02;
+TRUNCATE TABLE RaceResultByMyJockyJyoken;
+TRUNCATE TABLE RaceResultByMyJockyJyokenGrade;
+TRUNCATE TABLE RaceResultByParents01;
+TRUNCATE TABLE RaceResultByParents02;
+GO

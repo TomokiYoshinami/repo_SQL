@@ -1,4 +1,4 @@
-USE Jackpot416
+USE Jackpot513
 GO
 -- 0: ì¬A’PˆÊ: MB
 DBCC SHRINKFILE(Jackpot_data_01,8)
